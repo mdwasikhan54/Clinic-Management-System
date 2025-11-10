@@ -1,0 +1,2 @@
+manager|pass123|Manager
+doctor|doc123|Doctor

@@ -1,0 +1,11 @@
+Napa|85|12
+Histasin|100|10
+Ace|79|15
+Basok|50|70
+Napa|100|12
+Napa Extend|100|25
+Xorel|100|30
+Omidon|50|20
+Monas|60|150
+Histasin|50|10
+Alcet|60|40
