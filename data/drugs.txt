@@ -1,11 +1,10 @@
-Napa|85|12
-Histasin|100|10
-Ace|79|15
-Basok|50|70
-Napa|100|12
-Napa Extend|100|25
-Xorel|100|30
-Omidon|50|20
-Monas|60|150
-Histasin|50|10
-Alcet|60|40
+Napa Extra|499|25|2026-12-30
+Seclo 20mg|199|50|2027-06-15
+Monas 10|150|170|2026-08-20
+Azithromycin 500|99|350|2027-11-10
+Pantonix 20|298|70|2027-01-01
+Fexo 120|150|90|2026-05-25
+Cef-3 (Cefixime)|100|450|2029-12-12
+Bizaran 50|98|80|2028-02-28
+Comet 500|250|50|2027-09-30
+Alatrol|398|30|2026-10-10
