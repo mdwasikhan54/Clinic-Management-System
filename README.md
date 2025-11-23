@@ -22,8 +22,9 @@
 
 Watch the full system in action! Click the banner below to play the video.
 
-[![Watch the Demo](https://img.youtube.com/vi/F59Zkkpb-bM/maxresdefault.jpg)](https://www.youtube.com/watch?v=F59Zkkpb-bM)
----
+<a href="https://www.youtube.com/watch?v=F59Zkkpb-bM" target="_blank">
+  <img src="https://img.youtube.com/vi/F59Zkkpb-bM/maxresdefault.jpg" alt="Watch the Demo System">
+</a>
 
 ## 🌟 Key Features
 
