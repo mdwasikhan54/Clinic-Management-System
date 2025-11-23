@@ -57,3 +57,13 @@ Medicines:
   • Napa Extra - 1+1+1 - 4 days
 ════════════════════════════════════════════════════════════
 
+Name: RUBEL RANA │ Phone: 01512345105 │ SmartID: B7793
+ Visit: 24 Nov 2025, 01:28 AM 
+Age: 49 │ Gender: Male
+Medicines:
+  • Alcet - 0+0+1 - 6 days
+  • Monas - 1+0+1 - 10 days
+Tests:
+  • CBC test
+════════════════════════════════════════════════════════════
+
