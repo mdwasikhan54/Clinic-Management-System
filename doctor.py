@@ -1,7 +1,7 @@
 from user import User
 from database import (
     load_data, append_data, 
-    load_raw_lines, delete_line, format_datetime)
+    load_raw_lines, delete_line, format_datetime, clear_screen)
 from datetime import datetime
 import sys
 
@@ -13,31 +13,32 @@ class Doctor(User):
     def show_menu(self):
         while self._is_logged_in:
             self._header()
-            print("1. View Patient Queue")
-            print("2. Prescribe Patient")
-            print("3. View History")
-            print("4. Logout")
-            print("5. Exit")
-            ch = input("\nChoice (1-5): ").strip()
+            print("1. View Patient Queue 📋")
+            print("2. Prescribe Patient 📝")
+            print("3. View History 📜")
+            print("4. View Old Patient List 📂")
+            print("5. Logout 🔒")
+            print("6. Exit 🚪")
+            ch = input("\nChoice (1-6): ").strip()
             
             if ch == '1': self.view_patient_queue()
             elif ch == '2': self.prescribe_patient()
             elif ch == '3': self.view_history()
-            elif ch == '4': self.logout()
-            elif ch == '5': sys.exit(0)
-            else: input("Invalid! Press Enter...")
+            elif ch == '4': self.view_old_patients()
+            elif ch == '5': self.logout()
+            elif ch == '6': sys.exit(0)
+            else: input("\nInvalid! Press Enter...")
 
     def view_patient_queue(self):
         self._header()
-        print("TODAY'S PATIENT QUEUE")
+        print("PATIENT QUEUE 📋")
         
         data = load_data("serials.txt")
-        today = datetime.now().strftime('%Y-%m-%d')
-        today_serials = [d for d in data if len(d) > 3 and d[3].startswith(today)]
+        serials = [d for d in data if len(d) > 3 and d[3]]
         
-        if not today_serials:
-            print("\nNo patients waiting in queue today.")
-            input("Press Enter...")
+        if not serials:
+            print("\nNo patients waiting in queue today. 📋")
+            input("\nPress Enter...")
             return
 
         w_id, w_sid, w_name, w_phone = 4, 8, 18, 14
@@ -47,16 +48,16 @@ class Doctor(User):
         print("\n" + header)
         print(separator)
         
-        for i, d in enumerate(today_serials, 1):
+        for i, d in enumerate(serials, 1):
             smart_id = d[4] if len(d) > 4 else "N/A"
             print(f"{i:<{w_id}} │ {smart_id:<{w_sid}} │ {d[1]:<{w_name}} │ {d[2]:<{w_phone}}")
             
-        print("\nTotal Waiting: ", len(today_serials))
+        print("\nTotal Waiting: ", len(serials))
         input("Press Enter to return...")
 
     def prescribe_patient(self):
         self._header()
-        print("PRESCRIBE PATIENT")
+        print("PRESCRIBE PATIENT 📝")
         search = input("Enter Patient Phone or SmartID: ").strip()
         if not search:
             return
@@ -76,7 +77,7 @@ class Doctor(User):
                 break
 
         if not patient:
-            print("Patient not found in active serials.")
+            print("Patient not found in active serials. ❗")
             input(); return
 
         name, phone, smart_id = patient[1], patient[2], (patient[4] if len(patient) > 4 else "N/A")
@@ -96,11 +97,11 @@ class Doctor(User):
             print(f"Meds    : {len(rx['meds'])} added")
             print(f"Tests   : {len(rx['tests'])} added")
             print("-" * 50)
-            print("1. Set Age/Gender")
-            print("2. Add Medicine")
-            print("3. Add Test")
-            print("4. SAVE Prescription")
-            print("5. Cancel")
+            print("1. Set Age/Gender 👤")
+            print("2. Add Medicine 📝")
+            print("3. Add Test 🧪")
+            print("4. SAVE Prescription 💾")
+            print("5. Cancel ❌")
             
             ch = input(">> ").strip()
             
@@ -131,8 +132,8 @@ class Doctor(User):
                 if removed:
                     append_data("old_patients.txt", "|".join(removed))
                 
-                print("✓ Prescription saved successfully!")
-                input(); break
+                print("Prescription saved successfully! ✅")
+                input("\nPress Enter to continue..."); break
             elif ch == '5': 
                 break
 
@@ -162,29 +163,59 @@ class Doctor(User):
 
         lines = load_raw_lines("patients.txt")
         if not lines:
-            print("No history available.")
+            print("No history available. ❗")
             input("Press Enter...")
             return
 
         full_content = "".join(lines)
-        
         separator = "═" * 60
         records = full_content.split(separator)
-
-        found = False
-        print(f"\nSearching history for: {search}...\n")
-
+        
+        found_records = []
         for rec in records:
-            if not rec.strip():
-                continue
+            if rec.strip() and search in rec:
+                found_records.append(rec.strip())
 
-            if search in rec:
-                found = True
-                print(rec.strip())
+        clear_screen()
+        print(f" History Results for: {search}")
+        print("═" * 50)
+
+        if not found_records:
+            print("No history found for this patient. ❗")
+        else:
+            for rec in found_records:
+                print(rec)
                 print(separator)
                 print()
 
-        if not found:
-            print("No history found for this patient.")
-
         input("Press Enter to continue...")
+
+    def view_old_patients(self):
+        self._header()
+        print("OLD PATIENT RECORDS (Processed) 🕰️")
+        
+        data = load_data("old_patients.txt")
+        if not data:
+            print("\nNo old patient records found. ❗")
+            input("Press Enter...")
+            return
+
+        w_name, w_phone, w_sid, w_date = 20, 15, 10, 25
+        header = f"{'Name':<{w_name}} │ {'Phone':<{w_phone}} │ {'SmartID':<{w_sid}} │ {'Visit Date':<{w_date}}"
+        separator = "─" * len(header)
+
+        print("\n" + header)
+        print(separator)
+
+        for d in data:
+            if len(d) < 4: continue
+            
+            name = d[1]
+            phone = d[2]
+            visit_time = format_datetime(d[3])
+            smart_id = d[4] if len(d) > 4 else "N/A"
+
+            print(f"{name:<{w_name}} │ {phone:<{w_phone}} │ {smart_id:<{w_sid}} │ {visit_time:<{w_date}}")
+
+        print(f"\nTotal Records: {len(data)}")
+        input("Press Enter to return...")

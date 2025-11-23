@@ -7,18 +7,17 @@ class User:
     def login(self):
         if not self._is_logged_in:
             self._is_logged_in = True
-            print(f"{self.username} logged in as {self._role}.")
-            self._notify("Welcome back!")
+            print(f"{self.username} logged in as {self._role}. ✅")
+            self._notify("Welcome back! ✅")
         else:
-            print(f"{self.username} is already logged in.")
+            print(f"{self.username} is already logged in. ❗")
 
     def logout(self):
         if self._is_logged_in:
             self._is_logged_in = False
-            print(f"{self.username} logged out.")
-            self._notify("You have been logged out.")
+            self._notify("You have been logged out. ✅")
         else:
-            print(f"{self.username} is already logged out.")
+            print(f"{self.username} is already logged out. ❗")
 
     def _notify(self, msg):
         print(f"Notification: {msg}")
@@ -26,5 +25,5 @@ class User:
     def _header(self):
         from database import clear_screen
         clear_screen()
-        print(f" Hello {self.username} | Role: {self._role}")
+        print(f" Hello {self.username} 👋| Role: {self._role}")
         print("═" * 50)

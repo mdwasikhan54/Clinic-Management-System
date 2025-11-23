@@ -46,7 +46,13 @@ def append_data(filename, line):
 
 def get_next_id(filename):
     data = load_data(filename)
-    return str(len(data) + 1) if data else "1"
+    if not data:
+        return "1"
+    try:
+        ids = [int(row[0]) for row in data if row[0].isdigit()]
+        return str(max(ids) + 1) if ids else "1"
+    except:
+        return str(len(data) + 1)
 
 def delete_line(filename, index):
     data = load_data(filename)

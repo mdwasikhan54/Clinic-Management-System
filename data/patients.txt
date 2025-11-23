@@ -1,0 +1,59 @@
+Name: Ratul │ Phone: 018xxxxxxxx │ SmartID: J0018
+ Visit: 22 Nov 2025, 09:31 PM 
+Age: 22 │ Gender: Male
+Medicines:
+  • Napa Extra - 1+1+1 - 5 days
+  • Monas 10 - 0+0+1 - 7 days
+  • Seclo 20mg - 1+0+1 - 5 days
+  • Alatrol - 0+0+1 - 7 days
+Tests:
+  • CBC Test
+════════════════════════════════════════════════════════════
+
+Name: Samiur │ Phone: 019xxxxxxxx │ SmartID: J0019
+ Visit: 22 Nov 2025, 09:35 PM 
+Age: 21 │ Gender: Male
+Medicines:
+  • Fexo 120 - 1+0+1 - 6 days
+  • Cef-3 (Cefixime) - 1+0+1 - 7 days
+════════════════════════════════════════════════════════════
+
+Name: MOHAMMAD ALAM │ Phone: 01712345101 │ SmartID: B7789
+ Visit: 23 Nov 2025, 01:35 AM 
+Age: 25 │ Gender: Male
+Medicines:
+  • Napa Extra - 1+1+1 - 4 days
+  • Monas 10 - 0+0+1 - 10 days
+Tests:
+  • CBC
+  • WBC
+════════════════════════════════════════════════════════════
+
+Name: NUSRAT JAHAN │ Phone: 01812345102 │ SmartID: B7790
+ Visit: 23 Nov 2025, 03:19 PM 
+Age: 22 │ Gender: Female
+Medicines:
+  • Napa Extra - 1+1+1 - 4 days
+  • Alatrol - 0+0+1 - 3 days
+Tests:
+  • USG
+════════════════════════════════════════════════════════════
+
+Name: KAMAL HOSSAIN │ Phone: 01912345103 │ SmartID: B7791
+ Visit: 23 Nov 2025, 08:43 PM 
+Age: 36 │ Gender: Male
+Medicines:
+  • Napa Extra - 1+0+1 - 5 days
+  • Fexo - 1+0+1 - 3 days
+Tests:
+  • CBC
+  • EBC
+════════════════════════════════════════════════════════════
+
+Name: FATEMA KHATUN │ Phone: 01612345104 │ SmartID: B7792
+ Visit: 24 Nov 2025, 01:01 AM 
+Age: 24 │ Gender: Female
+Medicines:
+  • Napa Extra - 1+1+1 - 4 days
+════════════════════════════════════════════════════════════
+

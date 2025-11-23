@@ -45,15 +45,15 @@ def login():
     while True:
         clear_screen()
         print("═" * 50)
-        print("         CLINIC MANAGEMENT SYSTEM")
+        print("        💊 CLINIC MANAGEMENT SYSTEM 💉")
         print("═" * 50)
-        print("1. Manager")
-        print("2. Doctor")
-        print("3. Exit")
+        print("1. Manager 👔")
+        print("2. Doctor 🩺")
+        print("3. Exit 🚪")
         choice = input("\nSelect role (1-3): ").strip()
 
         if choice == '3':
-            print("Thanks for visiting!")
+            print("\nEscaping system... Thank you! 👋\n")
             sys.exit(0)
         if choice not in ['1', '2']:
             input("Invalid! Press Enter...")
@@ -65,7 +65,7 @@ def login():
             continue
 
         password = get_password_masked("Password: ")
-        print("Please wait, verifying credentials...")
+        print("\r \nPlease wait, verifying credentials... ⚠️")
         sleep(1)
 
         users = load_data("users.txt")
@@ -75,14 +75,14 @@ def login():
                 obj.login()
                 return obj
 
-        print("Invalid credentials!")
-        input("Press Enter to retry...")
+        print("\nInvalid credentials! ❌")
+        input("\nPress Enter to retry...")
 
 def main():
     while True:
         user = login()
         user.show_menu()
-        input("\nLogged out. Press Enter to continue...")
+        input(f"\n{user._role} logged out successfully. Press Enter to continue...")
 
 if __name__ == "__main__":
     main()
