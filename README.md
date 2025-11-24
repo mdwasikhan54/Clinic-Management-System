@@ -67,7 +67,7 @@ Follow these steps to run the project on your machine:
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/mdwasikhan54/Clinic-Management-System.git](https://github.com/mdwasikhan54/Clinic-Management-System.git)
+git clone https://github.com/mdwasikhan54/Clinic-Management-System.git
 cd Clinic-Management-System
 ````
 
