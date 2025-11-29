@@ -56,7 +56,7 @@ This system is divided into two secure modules based on user roles:
 ## 🛠️ Tech Stack
 
 * **Language:** Python 3 (Core)
-* **Data Storage:** Flat File Database (`|` separated values)
+* **Data Storage:** Custom file-based NoSQL-style storage system (`|` separated values).
 * **Libraries Used:** `sys`, `os`, `datetime`, `random`, `string`, `getpass` (No external pip install required!)
 
 ---
