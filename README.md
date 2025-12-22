@@ -1,140 +1,153 @@
 <div align="center">
 
-# 🏥 Clinic Management System
-### *Advanced Python CLI Application*
+# 🏥 Clinic Management System v2.0
+### *Professional Python GUI Application*
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-lightgrey?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.12.3-blue?style=for-the-badge&logo=python&logoColor=white)
+![GUI](https://img.shields.io/badge/Interface-Tkinter%20GUI-green?style=for-the-badge)
 ![Database](https://img.shields.io/badge/Database-Text%20File%20System-orange?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+![Status](https://img.shields.io/badge/Version-2.0-purple?style=for-the-badge)
 
 <br>
 
-> A comprehensive, terminal-based solution to manage clinic operations, patient queues, digital prescriptions, and pharmacy inventory without needing a heavy SQL database.
+> A comprehensive, desktop-based solution to manage clinic operations, patient queues, digital prescriptions, and pharmacy inventory. **Now upgraded from CLI to a modern, user-friendly Graphical User Interface (GUI).**
 
-[View Demo](#-project-demo) • [Features](#-key-features) • [Installation](#-installation--usage) • [Structure](#-project-structure)
+[Features](#-key-features) • [Installation](#-installation--usage) • [Tech Stack](#-Tech-Stack) • [Structure](#-project-structure)
 
 </div>
 
 ---
 
-## 📺 Project Demo
+## 🚀 What's New in Version 2.0?
 
-Watch the full system in action! Click the banner below to play the video.
+We have completely revamped the system from a terminal-based application to a **Full Modular GUI Application**.
 
-<a href="https://www.youtube.com/watch?v=F59Zkkpb-bM" target="_blank">
-  <img src="https://img.youtube.com/vi/F59Zkkpb-bM/maxresdefault.jpg" alt="Watch the Demo System">
-</a>
+* **🖥️ Modern UI:** Built with `Tkinter` & `TTK` for a professional look and feel.
+* **🖱️ Interactive Controls:** Buttons, Input Fields, Tabbed Navigation, and Treeview Tables.
+* **🏗️ Modular Architecture:** Codebase split into logical modules (`manager`, `doctor`, `database`) for better scalability.
+* **📊 Enhanced Reporting:** Searchable sales reports and visual stock management.
+
+---
 
 ## 🌟 Key Features
 
 This system is divided into two secure modules based on user roles:
 
-### 👨‍💼 Manager Module
-* **📋 Serial Management:** Take patient entries and generate unique serial tokens.
-* **🗂️ Queue Control:** View active waiting lists and cancel serials if necessary.
-* **💊 Inventory Control:** Complete CRUD (Create, Read, Update, Delete) operations for medicines.
-* **📊 Sales Reporting:** * View daily sales logs.
-    * Generate item-wise summary reports.
-    * Filter sales history by specific dates.
+### 👨‍💼 Manager Dashboard
+* **📋 Patient Entry:** Graphical form to register new patients and generate smart serial tokens (e.g., `J0018`).
+* **🗂️ Queue Management:** View active waiting lists in a table format and cancel appointments with a click.
+* **💊 Inventory Control:** View stock in a sortable table.
+    * **Edit/Delete** drugs directly from the UI.
+    * Visual indicators for expired medicines.
+* **📊 Sales Reporting:** **Daily Reports:** Auto-loads today's sales.
+    * **Date Search:** Filter sales history by specific dates.
+    * **Item Summary:** View total sales per medicine.
 
-### 👨‍⚕️ Doctor Module
-* **🩺 Live Queue:** See real-time patients waiting for consultation.
-* **📝 Digital Prescription:** * Auto-fetches patient info (Name, Age, Gender).
-    * Add medicines with dosage (e.g., `1+0+1`) and duration.
-    * Prescribe clinical tests.
-* **🆔 Smart Search:** Find patients using Phone Number or Smart ID.
-* **📜 History Tracking:** View past prescriptions and visit history of any patient.
+### 👨‍⚕️ Doctor Dashboard
+* **🩺 Digital Workspace:** A unified tabbed interface for workflow efficiency.
+* **📝 Visual Prescription Pad:** Select patients from the live queue.
+    * Add medicines and tests using input fields and "Add" buttons.
+    * Review the prescription list before saving.
+* **🆔 Smart Search:** Instantly verify patient history using Phone Number or Smart ID.
+* **📜 History Viewer:** Split-screen view showing the patient list on the left and detailed prescription records on the right.
 
 ### 🔐 Core System Features
-* **Security:** Password masking during login (works on both Windows & Linux).
-* **Smart ID Generation:** Creates unique IDs (e.g., `J0018`) based on time and phone number logic.
+* **Secure Login:** Role-based authentication (Manager vs. Doctor).
 * **Data Persistence:** Uses a structured file handling system (`.txt`) to save all data permanently.
+* **Smart ID Logic:** Unique IDs generated based on time and phone logic.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Language:** Python 3 (Core)
+* **Language:** Python 3.12.3
+* **GUI Framework:** `tkinter` (Standard Python Interface), `tkinter.ttk` (Themed Widgets).
 * **Data Storage:** Custom file-based NoSQL-style storage system (`|` separated values).
-* **Libraries Used:** `sys`, `os`, `datetime`, `random`, `string`, `getpass` (No external pip install required!)
+* **Modules Used:** `os`, `datetime`, `re`, `random`, `messagebox`, `simpledialog`.
+
+---
+
+## 📂 Project Structure
+
+The project follows a clean, modular architecture:
+
+```bash
+Clinic-Management-System/
+│
+├── main.py              # 🚀 Entry Point (Run this file)
+├── database.py          # 💾 Backend: File handling & Data operations
+├── login_module.py      # 🔐 UI: Login screen & Role selection
+├── manager_module.py    # 👔 UI: Manager dashboard & Inventory logic
+├── doctor_module.py     # 🩺 UI: Doctor dashboard & Prescription logic
+│
+└── data/                # 📂 Database Storage
+    ├── drugs.txt        # Inventory stock data
+    ├── patients.txt     # Prescriptions & Medical history
+    ├── sales.txt        # Sales logs
+    ├── serials.txt      # Daily patient queue
+    ├── old_patients.txt # Archived patient list
+    └── users.txt        # Auth credentials
+
+```
 
 ---
 
 ## 🚀 Installation & Usage
 
-Follow these steps to run the project on your machine:
+1. **Clone the Repo:**
+   ```bash
+   git clone https://github.com/mdwasikhan54/Clinic-Management-System.git
+   cd Clinic-Management-System
 
-### 1. Clone the Repository
+2. **Check for Tkinter (Optional):**
+Tkinter is included with standard Python installations. No external `pip` install is required. (Linux users might need `sudo apt-get install python3-tk`).
+
+4. **Run Application:**
 ```bash
-git clone https://github.com/mdwasikhan54/Clinic-Management-System.git
-cd Clinic-Management-System
-````
+  python main.py
+  ```
 
-### 2\. Run the Application
+---
 
-```bash
-python main.py
-```
-
-### 3\. Login Credentials
+### 3. Login Credentials
 
 Use the default credentials stored in the system to log in:
 
 | Role | Username | Password | Access Level |
-| :--- | :--- | :--- | :--- |
-| **Manager** 👔 | `manager1` | `pass123` | Inventory, Sales, Appt. |
-| **Doctor** 🩺 | `doctor1` | `doc123` | Patient Queue, Prescriptions |
+| --- | --- | --- | --- |
+| **Manager** 👔 | `manager` | `pass123` | Inventory, Sales, Appointments |
+| **Doctor** 🩺 | `doctor` | `doc123` | Patient Queue, Prescriptions, History |
 
------
+---
 
-## 📂 Project Structure
+## 📸 Highlights (Code Logic)
 
-```bash
-Clinic-Management-System/
-├── 📂 data/                 # The brain of the database
-│   ├── drugs.txt           # Inventory stock
-│   ├── patients.txt        # Prescriptions & History
-│   ├── sales.txt           # Sales records
-│   ├── serials.txt         # Daily queue
-│   └── users.txt           # Auth credentials
-│
-├── main.py                 # 🚀 Entry Point
-├── authentication.py       # Login logic
-├── database.py             # File handling & Utilities
-├── doctor.py               # Doctor class & methods
-├── manager.py              # Manager class & methods
-├── drug_manager.py         # Pharmacy logic
-└── user.py                 # Base User class
-```
-
------
-
-## 📸 Highlights (Code Snippets)
-
-**Smart ID Generation Logic:**
+**Modular Class Structure (Mixin Approach):**
 
 ```python
-def generate_smart_id(phone, time_str):
-    # Generates a unique 5-character alphanumeric ID
-    # based on the hour and phone digits.
-    prefix = string.ascii_uppercase[hour % 26]
-    final_id = candidate[:5]
-    return final_id
+class ClinicApp(LoginMixin, ManagerMixin, DoctorMixin):
+    def __init__(self, root):
+        self.root = root
+        self.setup_styles()
+        self.show_role_selection()
+
 ```
 
-**Secure Password Input:**
+**Smart Data Verification:**
 
 ```python
-# Hides password typing in the terminal
-import msvcrt # Windows
-import termios # Linux
+# Checks if the drug name in the prescription matches the stock
+if any(m.lower() in d[0].lower() or d[0].lower() in m.lower() for m in meds):
+    # Allows sale
+
 ```
 
------
+---
 
 ### 👨‍💻 Developed by [MD WASI KHAN](https://mdwasikhan-portfolio.netlify.app/) 
 
-If you find this project helpful, please drop a ⭐ star on the repo\!
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mdwasikhan54)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mdwasikhan54)
+</div>
 
-[GitHub Profile](https://github.com/mdwasikhan54)
+If you find this project helpful, please drop a ⭐ star on the repo\!
