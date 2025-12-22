@@ -1,88 +1,74 @@
-import sys
-from time import sleep
-from database import init_db, clear_screen, load_data
-from manager import Manager
-from doctor import Doctor
+import tkinter as tk
+from tkinter import ttk
+from database import *
+from login_module import LoginMixin
+from manager_module import ManagerMixin
+from doctor_module import DoctorMixin
 
-def get_password_masked(prompt="Password: ", mask="*"):
-    print(prompt, end="", flush=True)
-    password = ""
-    if sys.platform.startswith("win"):
-        import msvcrt
-        while True:
-            ch = msvcrt.getwch()
-            if ch in ("\r", "\n"):
-                print()
-                return password
-            if ch == "\x08" and password:
-                password = password[:-1]
-                print("\b \b", end="", flush=True)
-            elif ch.isprintable():
-                password += ch
-                print(mask, end="", flush=True)
-    else:
-        import tty, termios
-        fd = sys.stdin.fileno()
-        old = termios.tcgetattr(fd)
-        try:
-            tty.setraw(fd)
-            while True:
-                ch = sys.stdin.read(1)
-                if ch in ("\r", "\n"):
-                    print()
-                    return password
-                if ch in ("\x7f", "\b") and password:
-                    password = password[:-1]
-                    print("\b \b", end="", flush=True)
-                elif ch.isprintable():
-                    password += ch
-                    print(mask, end="", flush=True)
-        finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+class ClinicApp(LoginMixin, ManagerMixin, DoctorMixin):
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Clinic Management System - Professional")
+        self.root.geometry("1300x800")
+        self.root.minsize(1024, 768)
+        
+        # --- UI Theme & Styles ---
+        self.colors = {
+            "bg": "#F0F2F5", "sidebar": "#2C3E50", "primary": "#3498DB",
+            "success": "#27AE60", "danger": "#E74C3C", "text": "#34495E", "white": "#FFFFFF"
+        }
+        self.setup_styles()
+        self.root.configure(bg=self.colors["bg"])
+        
+        # Session State
+        self.current_user = None
+        self.role = None
+        self.current_patient = None
+        self.current_patient_index = None
+        
+        self.show_role_selection()
 
-def login():
-    init_db()
-    while True:
-        clear_screen()
-        print("═" * 50)
-        print("        💊 CLINIC MANAGEMENT SYSTEM 💉")
-        print("═" * 50)
-        print("1. Manager 👔")
-        print("2. Doctor 🩺")
-        print("3. Exit 🚪")
-        choice = input("\nSelect role (1-3): ").strip()
+    def setup_styles(self):
+        """Configures custom TTK styles for a modern look."""
+        style = ttk.Style()
+        style.theme_use("clam")
+        
+        # Frames
+        style.configure("Main.TFrame", background=self.colors["bg"])
+        style.configure("Card.TFrame", background=self.colors["white"], relief="flat")
+        style.configure("Sidebar.TFrame", background=self.colors["sidebar"])
+        
+        # Labels
+        style.configure("TLabel", background=self.colors["bg"], foreground=self.colors["text"], font=("Segoe UI", 11))
+        style.configure("Header.TLabel", font=("Segoe UI", 24, "bold"), background=self.colors["bg"], foreground=self.colors["sidebar"])
+        style.configure("CardTitle.TLabel", font=("Segoe UI", 16, "bold"), background=self.colors["white"], foreground=self.colors["sidebar"])
+        style.configure("CardBody.TLabel", font=("Segoe UI", 11), background=self.colors["white"], foreground=self.colors["text"])
+        style.configure("White.TLabel", background=self.colors["sidebar"], foreground=self.colors["white"], font=("Segoe UI", 12))
+        style.configure("Small.TLabel", background=self.colors["white"], foreground="gray", font=("Segoe UI", 9))
 
-        if choice == '3':
-            print("\nEscaping system... Thank you! 👋\n")
-            sys.exit(0)
-        if choice not in ['1', '2']:
-            input("Invalid! Press Enter...")
-            continue
+        # Buttons
+        style.configure("TButton", font=("Segoe UI", 11), padding=8, borderwidth=0)
+        style.map("TButton", background=[("active", "#BDC3C7")])
+        
+        style.configure("Primary.TButton", background=self.colors["primary"], foreground=self.colors["white"])
+        style.map("Primary.TButton", background=[("active", "#2980B9")])
+        
+        style.configure("Success.TButton", background=self.colors["success"], foreground=self.colors["white"])
+        style.map("Success.TButton", background=[("active", "#219150")])
+        
+        style.configure("Danger.TButton", background=self.colors["danger"], foreground=self.colors["white"])
+        style.map("Danger.TButton", background=[("active", "#C0392B")])
 
-        role = "Manager" if choice == '1' else "Doctor"
-        username = input(f"{role} Username: ").strip()
-        if not username:
-            continue
+        # Treeview
+        style.configure("Treeview", background=self.colors["white"], fieldbackground=self.colors["white"], font=("Segoe UI", 10), rowheight=28)
+        style.configure("Treeview.Heading", font=("Segoe UI", 10, "bold"), background=self.colors["sidebar"], foreground=self.colors["white"])
+        style.map("Treeview", background=[('selected', self.colors["primary"])])
 
-        password = get_password_masked("Password: ")
-        print("\r \nPlease wait, verifying credentials... ⚠️")
-        sleep(1)
-
-        users = load_data("users.txt")
-        for user in users:
-            if len(user) >= 3 and user[0] == username and user[1] == password and user[2] == role:
-                obj = Manager(username) if role == "Manager" else Doctor(username)
-                obj.login()
-                return obj
-
-        print("\nInvalid credentials! ❌")
-        input("\nPress Enter to retry...")
-
-def main():
-    while True:
-        user = login()
-        user.show_menu()
-        input(f"\n{user._role} logged out successfully. Press Enter to continue...")
+    def clear_frame(self):
+        for widget in self.root.winfo_children():
+            widget.destroy()
 
 if __name__ == "__main__":
-    main()
+    root = tk.Tk()
+    app = ClinicApp(root)
+    root.mainloop()

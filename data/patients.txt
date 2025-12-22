@@ -67,3 +67,70 @@ Tests:
   • CBC test
 ════════════════════════════════════════════════════════════
 
+Name: SADIA AFRIN │ Phone: 1312345106 │ SmartID: B7794
+ Visit: 22 Dec 2025, 09:55 PM 
+Age: 22 │ Gender: Female
+Medicines:
+  • Napa - 0+1+1 - 3 days
+Tests:
+  • wbc
+════════════════════════════════════════════════════════════
+
+Name: JASHIM UDDIN │ Phone: 1412345107 │ SmartID: B7795
+ Visit: 22 Dec 2025, 11:03 PM 
+Age: 22 │ Gender: Male
+Medicines:
+  • Alcet - 1+0+1 - 5 days
+Tests:
+  • cbc
+════════════════════════════════════════════════════════════
+
+Name: Osman Hadi │ Phone: 1222111554 │ SmartID: L15543
+ Visit: 22 Dec 2025, 11:24 PM 
+Age: 32 │ Gender: Male
+Medicines:
+  • Napa - 1+1+1 - 5 days days
+Tests:
+  • WBC
+════════════════════════════════════════════════════════════
+
+Name: ARIFUR RAHMAN │ Phone: 1898765109 │ SmartID: B7797
+ Visit: 22 Dec 2025, 11:45 PM 
+Age: 12 │ Gender: Male
+Medicines:
+  • Alcet - 1+1+1 - 2 days days
+Tests:
+  • wbc
+════════════════════════════════════════════════════════════
+
+Name: TASNIM JARIN │ Phone: 1998765110 │ SmartID: B7798
+ Visit: 23 Dec 2025, 12:27 AM
+Age: 20 │ Gender: Female
+Medicines:
+ • Napa - 1+1+1 - 3 days
+Tests:
+ • WBC
+════════════════════════════════════════════════════════════
+
+Name: SHARIF UDDIN │ Phone: 1234567788 │ SmartID: B778812
+ Visit: 23 Dec 2025, 12:42 AM
+Age: 19 │ Gender: Male
+Medicines:
+ • Histasin - 1+0+0 - 3 days
+ • Alcet - 1+0+1 - 2 days
+ • Monas - 0+0+1 - 7 days
+Tests:
+ • X ray
+════════════════════════════════════════════════════════════
+
+Name: Al Saef │ Phone: 1219221021 │ SmartID: A1021
+ Visit: 23 Dec 2025, 01:14 AM
+Age: 25 │ Gender: Male
+Medicines:
+ • Antacid - 1+1+1 - 3 days
+ • Fexo - 1+0+1 - 4 days
+ • Monas - 0+0+1 - 10 days
+Tests:
+ • Urine test
+════════════════════════════════════════════════════════════
+
